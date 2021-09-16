@@ -29,24 +29,31 @@ with open (csvpath) as csvfile:
         previous_row = int(row[1])
         change_list += [monthly_change]
         month_list += [row[0]]
+
     
     month_average = sum(change_list)/len(month_list)
-
+    max_change_list = max(change_list)
+    min_change_list = min(change_list)
+    max_change_date = (month_list[change_list.index(max(change_list))])
+    min_change_date = (month_list[change_list.index(min(change_list))])
+    
     
     print("Total # of months: " + str(num_rows))
     print("Total Profit/Loss: " + str(total))
     print("Average Change: "+ str(month_average))
+    print("Greatest Increase in Profits: "  + str(max_change_date) + (" ") +  str(max_change_list))
+    print("Greatest Decrease in Profits: " + str(min_change_date) + (" ") +  str(min_change_list))
+    
 
 
 
 
 
 
-    # for row in csvreader:
-    #     profit_loss = [row[1]]        
-    #     for x in profit_loss:
-            
-    #         print(x)
+
+
+
+   
 
 
 

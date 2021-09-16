@@ -1,22 +1,37 @@
-
 import os
 
 import csv
 
 csvpath = os.path.join('..', 'Resources', 'election_data.csv')
 
+candidates = []
+
+#candidate_names = list(set(candidates))
+
+num_vote = []
+
+
+
 with open(csvpath) as csvfile:
 
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    print(csvreader)
-
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
 
-    for row in csvreader:
-        print (row)
-
-
-
+    num_votes = 0
+    total = 0
     
+    
+    
+    
+    for row in csvreader:
+        num_votes += 1
+        total += int(row[0])
+        candidates += [(row[2])]
+
+    #candidate_names = list(set(candidates))          
+    
+    
+
+    print(str(num_votes))
+    #print(candidates_names)

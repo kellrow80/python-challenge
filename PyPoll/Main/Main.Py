@@ -10,10 +10,8 @@ khan = []
 li = []
 correy = []
 
-
-#candidate_names = list(set(candidates))
-
-num_vote = []
+candidates = ["O'tooley", "Khan", "Li", "Correy"]
+total_candidate_votes = []
 
 
 
@@ -22,15 +20,9 @@ with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
     csv_header = next(csvreader)
-
-    num_votes = 0
-    
-    
-    
-    
+ 
     
     for row in csvreader:
-        num_votes += 1
         vote_list += [(row[2])]
         if row[2] =="Correy":
             #adds to Correy list
@@ -52,21 +44,24 @@ with open(csvpath) as csvfile:
     total_votes_li = len(li)
     total_votes_khan = len(khan)
     total_votes_otooley = len(otooley)
-    
+
+    total_candidate_votes = (total_votes_otooley, total_votes_khan, total_votes_li, total_votes_correy)
+    max_total_votes = max(total_votes_otooley, total_votes_khan, total_votes_li, total_votes_correy)
+    max_votes_index = total_candidate_votes.index(max_total_votes)
+    winner = candidates[max_votes_index]
 
 
-
-    #Percentage_of_Votes = sum(candidate_votes) Number of cadidate votes / (num_votes) total number votes
     
 
-          
     
-    
-    print(total_votes)
-    print(f'Correy: {total_votes_correy} ' )
-    print(f'Li: {total_votes_li}')
-    print(f'Khan: {total_votes_khan}')
-    print(f"O'Tooley: {total_votes_otooley}")
-    print(str(num_votes))
     print(candidate_names)
+    print(f'Total Votes: {total_votes}')
+    print(f"O'Tooley: {total_votes_otooley/total_votes: .2%} ( {total_votes_otooley} )")
+    print(f'Correy: {total_votes_correy/total_votes:.2%} ( {total_votes_correy} )' )
+    print(f'Khan: {total_votes_khan/total_votes: .2%} ( {total_votes_khan} )')
+    print(f'Li: {total_votes_li/total_votes: .2%} ( {total_votes_li} )') 
+    print(f'Winner: {winner}')
+    
+    
+    
     
